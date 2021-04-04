@@ -1,0 +1,10 @@
+{
+  "Authorization": {
+    "route": "/authorization",
+    "loadType": "dynamic"
+  },
+  "MainPage": {
+    "route": "/",
+    "loadType": "dynamic"
+  }
+}

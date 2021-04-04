@@ -1,0 +1,3 @@
+[submodule "WebFrameworkLibrary"]
+	path = WebFrameworkLibrary
+	url = https://github.com/LazyPanda07/WebFramework.git
