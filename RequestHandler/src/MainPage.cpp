@@ -62,7 +62,7 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 		}
 		else
 		{
-
+			request.sendAssetFile("/StudentMainPage.html", response);
 		}
 
 		response.addHeader("Content-Type", "text/html; charset=utf-8");

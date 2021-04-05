@@ -36,11 +36,15 @@
     <ClCompile Include="src\Database\SP_reference.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\AddRequest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
     <None Include="assets\Authorization.html" />
+    <None Include="assets\StudentMainPage.html" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Authorization.h">
@@ -62,6 +66,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\Database\Constants.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AddRequest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

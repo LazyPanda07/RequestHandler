@@ -4,6 +4,8 @@
 #include "Database/SP_users.h"
 #include "Database/Constants.h"
 
+using namespace std;
+
 void Authorization::init(const framework::utility::JSONSettingsParser::ExecutorSettings& settings)
 {
 
@@ -11,7 +13,7 @@ void Authorization::init(const framework::utility::JSONSettingsParser::ExecutorS
 
 void Authorization::doPost(framework::HTTPRequest&& request, framework::HTTPResponse& response)
 {
-	const auto& login = request.getKeyValueParameters().at("login");
+	string login = request.getJSON().get<string>("login");
 
 	if (login == "admin")
 	{
@@ -19,12 +21,8 @@ void Authorization::doPost(framework::HTTPRequest&& request, framework::HTTPResp
 
 		response.addBody
 		(
-			framework::utility::cp1251ToUTF8("Авторизация прошла успешно")
+			json::JSONBuilder(1251).push_back<bool>(make_pair("success", true))
 		);
-
-		response.setResponseCode(web::ResponseCodes::seeOther);
-
-		response.addHeader("Location", "/");
 	}
 	else
 	{
@@ -36,25 +34,19 @@ void Authorization::doPost(framework::HTTPRequest&& request, framework::HTTPResp
 		{
 			response.addBody
 			(
-				framework::utility::cp1251ToUTF8("Авторизация прошла успешно")
+				json::JSONBuilder(1251).push_back<bool>(make_pair("success", true))
 			);
 
 			request.setAttribute("id", result[0].at("id_user"));
-
-			response.setResponseCode(web::ResponseCodes::seeOther);
-
-			response.addHeader("Location", "/");
 		}
 		else
 		{
 			response.addBody
 			(
-				framework::utility::cp1251ToUTF8("Не удалось найти пользователя с такими данными")
+				json::JSONBuilder(1251).push_back<bool>(make_pair("success", false))
 			);
 		}
 	}
-
-	response.addHeader("Content-Type", "text/html; charset=utf-8");
 }
 
 void Authorization::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& response)

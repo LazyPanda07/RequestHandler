@@ -6,5 +6,9 @@
   "MainPage": {
     "route": "/",
     "loadType": "dynamic"
+  },
+  "AddRequest": {
+    "route": "/addRequest",
+    "loadType": "dynamic"
   }
 }

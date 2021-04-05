@@ -196,6 +196,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AddRequest.cpp" />
     <ClCompile Include="src\Authorization.cpp" />
     <ClCompile Include="src\Database\Mode.cpp" />
     <ClCompile Include="src\Database\SP_destination.cpp" />
@@ -206,10 +207,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Authorization.html" />
+    <None Include="assets\StudentMainPage.html" />
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AddRequest.h" />
     <ClInclude Include="src\Authorization.h" />
     <ClInclude Include="src\Database\Constants.h" />
     <ClInclude Include="src\Database\Mode.h" />
