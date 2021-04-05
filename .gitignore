@@ -36,3 +36,9 @@ bin/
 
 # VS folder
 .vs/
+
+# Logs
+*.log
+
+# Database
+request_handler.sqlite3

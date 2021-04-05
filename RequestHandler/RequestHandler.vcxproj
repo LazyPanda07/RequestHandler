@@ -197,15 +197,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Authorization.cpp" />
+    <ClCompile Include="src\Database\Mode.cpp" />
+    <ClCompile Include="src\Database\SP_destination.cpp" />
+    <ClCompile Include="src\Database\SP_reference.cpp" />
+    <ClCompile Include="src\Database\SP_users.cpp" />
     <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\MainPage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\Authorization.html" />
+    <None Include="assets\MainPage.wfdp" />
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Authorization.h" />
+    <ClInclude Include="src\Database\Constants.h" />
+    <ClInclude Include="src\Database\Mode.h" />
+    <ClInclude Include="src\Database\SP_destination.h" />
+    <ClInclude Include="src\Database\SP_reference.h" />
+    <ClInclude Include="src\Database\SP_users.h" />
     <ClInclude Include="src\MainPage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
