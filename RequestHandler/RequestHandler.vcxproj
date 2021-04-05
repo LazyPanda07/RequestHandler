@@ -206,7 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Authorization.html" />
-    <None Include="assets\MainPage.wfdp" />
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
   </ItemGroup>

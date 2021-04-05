@@ -41,7 +41,6 @@
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
     <None Include="assets\Authorization.html" />
-    <None Include="assets\MainPage.wfdp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Authorization.h">

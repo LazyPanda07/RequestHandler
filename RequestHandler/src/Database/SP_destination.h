@@ -4,8 +4,11 @@
 
 namespace db
 {
-	class SP_reference : public framework::sqlite::SQLiteDatabaseModel
+	class SP_destination : public framework::sqlite::SQLiteDatabaseModel
 	{
+	public:
+		SP_destination();
 
+		~SP_destination() = default;
 	};
 }
