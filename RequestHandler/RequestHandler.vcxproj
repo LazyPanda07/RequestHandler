@@ -207,7 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Authorization.html" />
+    <None Include="templates\script.js" />
     <None Include="assets\StudentMainPage.html" />
+    <None Include="assets\script.wfdp" />
     <None Include="web.json" />
     <None Include="request_handler_settings.ini" />
   </ItemGroup>

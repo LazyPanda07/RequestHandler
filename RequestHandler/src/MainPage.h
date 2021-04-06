@@ -11,6 +11,8 @@ public:
 
 	void doGet(framework::HTTPRequest&& request, framework::HTTPResponse& response) override;
 
+	void doDelete(framework::HTTPRequest&& request, framework::HTTPResponse& response) override;
+
 	void destroy() override;
 
 	~MainPage() = default;

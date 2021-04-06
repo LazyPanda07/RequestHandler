@@ -45,6 +45,8 @@
     <None Include="request_handler_settings.ini" />
     <None Include="assets\Authorization.html" />
     <None Include="assets\StudentMainPage.html" />
+    <None Include="templates\script.js" />
+    <None Include="assets\script.wfdp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Authorization.h">

@@ -30,26 +30,38 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 
 			if (data.size())
 			{
-				string result = R"(<table style="margin-left: auto; margin-right: auto;">)";
+				string result = R"(<table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">)";
+
+				variables->insert(make_pair("title", framework::utility::cp1251ToUTF8("Главная страница")));
+
+				variables->insert(make_pair("pathToScript", "/script.js"));
+
+				variables->insert(make_pair("error", framework::utility::cp1251ToUTF8("Не удалось удалить заявку")));
+
+				request.sendAssetFile("/script.wfdp", response, variables);
 
 				for (const auto& i : data)
 				{
-					result += "<tr>";
+					result += R"(<tr style="border: 2px solid black;">)";
 
-					result += "<td>" + i.at("full_name") + "</td>";
+					result += R"(<td style="visibility: hidden">)" + i.at("id_mode") + "</td>";
 
-					result += "<td>" + i.at("destination") + "</td>";
+					result += R"(<td style="border: 2px solid black;">)" + i.at("full_name") + "</td>";
 
-					result += "<td>" + i.at("type") + "</td>";
+					result += R"(<td style="border: 2px solid black;">)" + i.at("destination") + "</td>";
+
+					result += R"(<td style="border: 2px solid black;">)" + i.at("type") + "</td>";
+
+					result += R"X(<td><button onclick="sendRequest(this.id)" id=")X" + i.at("id_mode") + R"(">)" + framework::utility::cp1251ToUTF8("Удалить") + "</button></td>";
 
 					result += "</tr>";
 				}
 
-				result += "</table>";
+				result += "</table></body></html>";
 
-				response.addBody
+				response.appendBody
 				(
-					move(result)
+					result
 				);
 			}
 			else
@@ -73,6 +85,11 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 
 		response.addHeader("Location", "/authorization");
 	}
+}
+
+void MainPage::doDelete(framework::HTTPRequest&& request, framework::HTTPResponse& response)
+{
+	
 }
 
 void MainPage::destroy()
