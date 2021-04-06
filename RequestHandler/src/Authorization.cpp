@@ -37,7 +37,7 @@ void Authorization::doPost(framework::HTTPRequest&& request, framework::HTTPResp
 				json::JSONBuilder(1251).push_back<bool>(make_pair("success", true))
 			);
 
-			request.setAttribute("id", result[0].at("id_user"));
+			request.setAttribute("id", result[0].at("id"));
 		}
 		else
 		{

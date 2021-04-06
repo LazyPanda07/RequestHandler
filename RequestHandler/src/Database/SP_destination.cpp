@@ -16,7 +16,7 @@ namespace db
 	{
 		this->rawQuery
 		(
-			"CREATE TABLE IF NOT EXISTS " + this->getTableName() + " (id_destination INTEGER PRIMARY KEY AUTOINCREMENT, destination VARCHAR(60) NOT NULL)",
+			"CREATE TABLE IF NOT EXISTS " + this->getTableName() + " (id INTEGER PRIMARY KEY AUTOINCREMENT, destination VARCHAR(60) NOT NULL)",
 			framework::sqlite::SQLiteDatabaseModel::queryType::write
 		);
 	}

@@ -29,8 +29,8 @@ void AddRequest::doPost(framework::HTTPRequest&& request, framework::HTTPRespons
 		spDestinationModel->insertQuery({ { "destination", destination } });
 		spReferenceModel->insertQuery({ { "type", type } });
 
-		string destinationId = spDestinationModel->selectByFieldQuery({ { "destination", destination } })[0].at("id_destination");
-		string referenceId = spReferenceModel->selectByFieldQuery({ { "type", type } })[0].at("id_reference");
+		string destinationId = spDestinationModel->selectByFieldQuery({ { "destination", destination } })[0].at("id");
+		string referenceId = spReferenceModel->selectByFieldQuery({ { "type", type } })[0].at("id");
 
 		modeModel->insertQuery({ { "id_reference", referenceId }, { "id_destination", destinationId }, { "id_user", id } });
 
