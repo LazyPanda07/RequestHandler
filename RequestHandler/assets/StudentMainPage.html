@@ -6,19 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная страница</title>
+
+    <script>
+        function sendRequest() {
+            var xhr = new XMLHttpRequest();
+            var selection = document.getElementById("type");
+
+            xhr.open("POST", "/addRequest", false);
+
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onloadend = function () {
+                if (xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+
+                    if (json["success"]) {
+                        alert("Заявка успешно добавлена");
+                    }
+                    else {
+                        alert("Не удалось добавить заявку");
+                    }
+                }
+                else if (xhr.status === 401) {
+                    alert("Вы не авторизованы");
+                }
+            }
+
+            var data = JSON.stringify({
+                "destination": document.getElementById("destination").value,
+                "type": selection.options[selection.selectedIndex].text
+            });
+
+            xhr.send(data);
+        }
+    </script>
 </head>
 
 <body>
 
-    <form action="/addRequest" method="post">
-        <input type="text" placeholder="Назначение" name="destination">
+    <input type="text" placeholder="Назначение" id="destination">
 
-        <select name="type">
-            <option value="student">Студент ЧелГУ</option>
-        </select>
+    <select id="type">
+        <option>Студент ЧелГУ</option>
+    </select>
 
-        <input type="submit" value="Отправить заявку">
-    </form>
+    <input type="submit" value="Отправить заявку" onclick="sendRequest()">
 
 </body>
 
