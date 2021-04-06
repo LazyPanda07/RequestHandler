@@ -17,8 +17,6 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 {
 	try
 	{
-		smartPointer<unordered_map<string_view, string>> variables = make_unique<unordered_map<string_view, string>>();
-
 		auto& modeModel = request.getDatabaseModelInstance<db::Mode>(db::databaseName, db::modeTableName);
 		auto& spDestinationModel = request.getDatabaseModelInstance<db::SP_destination>(db::databaseName, db::spDestinationTableName);
 		auto& spReferenceModel = request.getDatabaseModelInstance<db::SP_reference>(db::databaseName, db::spReferenceTableName);
@@ -35,6 +33,7 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 			if (data.size())
 			{
 				string result = R"(<table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">)";
+				smartPointer<unordered_map<string_view, string>> variables = make_unique<unordered_map<string_view, string>>();
 
 				variables->insert(make_pair("title", framework::utility::cp1251ToUTF8("Главная страница")));
 
