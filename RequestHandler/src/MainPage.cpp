@@ -27,7 +27,7 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 		{
 			framework::sqlite::utility::SQLiteResult data = modeModel->rawQuery
 			(
-				"SELECT Mode.id, SP_users.full_name, SP_destination.destination, SP_reference.type "
+				"SELECT Mode.id as id, SP_users.full_name, SP_destination.destination, SP_reference.type "
 				"FROM SP_users INNER JOIN(SP_reference INNER JOIN(SP_destination INNER JOIN Mode ON SP_destination.id = Mode.id_destination) ON SP_reference.id = Mode.id_reference) ON SP_users.id = Mode.id_user",
 				framework::sqlite::SQLiteDatabaseModel::queryType::read
 			);
