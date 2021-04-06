@@ -26,13 +26,10 @@ void AddRequest::doPost(framework::HTTPRequest&& request, framework::HTTPRespons
 		const string& destination = json.get<string>("destination");
 		const string& type = json.get<string>("type");
 
-		spDestinationModel->insertQuery({ { "destination", destination } });
-		spReferenceModel->insertQuery({ { "type", type } });
+		framework::sqlite::utility::SQLiteResult destinationId = spDestinationModel->insertQuery({ { "destination", destination } });
+		framework::sqlite::utility::SQLiteResult referenceId = spReferenceModel->insertQuery({ { "type", type } });
 
-		string destinationId = spDestinationModel->selectByFieldQuery({ { "destination", destination } })[0].at("id");
-		string referenceId = spReferenceModel->selectByFieldQuery({ { "type", type } })[0].at("id");
-
-		modeModel->insertQuery({ { "id_reference", referenceId }, { "id_destination", destinationId }, { "id_user", id } });
+		modeModel->insertQuery({ { "id_reference", referenceId[0].at("id") }, { "id_destination", destinationId[0].at("id") }, { "id_user", id } });
 
 		response.addBody
 		(
@@ -43,7 +40,7 @@ void AddRequest::doPost(framework::HTTPRequest&& request, framework::HTTPRespons
 	{
 		response.setResponseCode(web::ResponseCodes::unauthorized);
 	}
-	catch (const runtime_error& e)
+	catch (const runtime_error&)
 	{
 		response.addBody
 		(

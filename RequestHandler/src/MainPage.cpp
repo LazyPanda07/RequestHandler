@@ -4,6 +4,7 @@
 #include "Database/Mode.h"
 #include "Database/SP_destination.h"
 #include "Database/SP_reference.h"
+#include "Database/SP_users.h"
 #include "Database/Constants.h"
 
 using namespace std;
@@ -20,6 +21,7 @@ void MainPage::doGet(framework::HTTPRequest&& request, framework::HTTPResponse& 
 		auto& modeModel = request.getDatabaseModelInstance<db::Mode>(db::databaseName, db::modeTableName);
 		auto& spDestinationModel = request.getDatabaseModelInstance<db::SP_destination>(db::databaseName, db::spDestinationTableName);
 		auto& spReferenceModel = request.getDatabaseModelInstance<db::SP_reference>(db::databaseName, db::spReferenceTableName);
+		auto& spUsersModel = request.getDatabaseModelInstance<db::SP_users>(db::databaseName, db::spUsersTableName);
 
 		if (request.getAttribute("id") == "admin")
 		{
